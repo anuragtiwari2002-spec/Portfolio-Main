@@ -8,10 +8,16 @@ type CaseStudySection = {
   points: string[];
   label: string;
   note: string;
+  image?: string;
+  imageAlt?: string;
   secondaryLabel?: string;
   secondaryNote?: string;
+  secondaryImage?: string;
+  secondaryImageAlt?: string;
   tertiaryLabel?: string;
   tertiaryNote?: string;
+  tertiaryImage?: string;
+  tertiaryImageAlt?: string;
 };
 
 type CaseStudyPageProps = {
@@ -113,7 +119,16 @@ export function CaseStudyPage({
               <div className="text-[11px] font-mono uppercase tracking-wider text-muted/70">
                 {section.label}
               </div>
-              <div className="aspect-[16/10] w-full rounded-lg border border-border bg-badge-bg" />
+              {section.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={section.image}
+                  alt={section.imageAlt ?? section.label}
+                  className="aspect-[16/10] w-full rounded-lg border border-border object-cover"
+                />
+              ) : (
+                <div className="aspect-[16/10] w-full rounded-lg border border-border bg-badge-bg" />
+              )}
               <p className="text-sm text-muted">{section.note}</p>
             </div>
 
@@ -132,7 +147,20 @@ export function CaseStudyPage({
               <div className="text-[11px] font-mono uppercase tracking-wider text-muted/70">
                 {section.secondaryLabel ?? `${section.label} / Iteration`}
               </div>
-              <div className="aspect-[16/10] w-full rounded-lg border border-border bg-badge-bg" />
+              {section.secondaryImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={section.secondaryImage}
+                  alt={
+                    section.secondaryImageAlt ??
+                    section.secondaryLabel ??
+                    `${section.label} / Iteration`
+                  }
+                  className="aspect-[16/10] w-full rounded-lg border border-border object-cover"
+                />
+              ) : (
+                <div className="aspect-[16/10] w-full rounded-lg border border-border bg-badge-bg" />
+              )}
               <p className="text-sm text-muted">
                 {section.secondaryNote ??
                   "Additional placeholder visual for an intermediate exploration."}

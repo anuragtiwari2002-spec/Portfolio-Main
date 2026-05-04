@@ -29,6 +29,10 @@ export default function PaytmPostpaidPage() {
           ],
           label: "01 / Onboarding",
           note: "Dummy visual placeholder for onboarding journey.",
+          image: "/paytm-onboarding.png",
+          imageAlt: "Spend Now, Pay Next Month — Paytm Postpaid onboarding hero",
+          secondaryImage: "/paytm-onboarding-iteration.png",
+          secondaryImageAlt: "Paytm Postpaid logo iteration",
         },
         {
           title: "Bill clarity and repayment",
